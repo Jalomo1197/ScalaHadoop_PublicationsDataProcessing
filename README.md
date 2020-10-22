@@ -67,10 +67,12 @@ the following hadoop command (assuming you have hadoop installed already):
 ```
 hadoop jar <.jar file> <MainClass> <XMLInputFile> <OutputPath>
 ```
+
 or 
- ```
- hadoop jar <.jar file> <XMLInputFile> <OutputPath>
- ```
+
+```
+hadoop jar <.jar file> <XMLInputFile> <OutputPath>
+```
 
 MainClass => Driver
 
