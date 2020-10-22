@@ -82,3 +82,8 @@ See [build.sbt](./build.sbt) and [assembly.sbt](./project/assembly.sbt)
 
 
 ##### Updates coming soon
+- logging sfl4j
+- downloadable jars
+- readme clean up + walk through expansion
+- more comments
+
