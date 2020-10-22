@@ -45,7 +45,7 @@ Obtaining the .jar file for a specific task.
 
 First you will need to import this project into intellij as a scala/sbt project from github. Next, depending 
 on which functionality you want in the .jar (e.g. OneAuthor, TopTenPerVenue, etc.), you will modify only the [Driver class](./src/main/scala/Driver.scala).
-Within the Driver class you must set the appropriate mapper and reducer classes for the job. 
+Within the Driver class you must set the appropriate mapper and reducer classes for the job instance to get the desired functionality. 
 The class type of both mapper and reducer outputs must also be adjusted to match the out pair types of the task file (e.g. ListRanking.scala)
 ```scala
     // Specifying which functionality
