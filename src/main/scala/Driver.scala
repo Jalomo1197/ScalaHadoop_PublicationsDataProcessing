@@ -1,16 +1,9 @@
-import javax.xml.parsers.SAXParser
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.Path
-import org.apache.hadoop.io
 import org.apache.hadoop.io.{IntWritable, LongWritable, MapWritable, Text}
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat
 import org.apache.hadoop.mapreduce.{Job, Mapper, Reducer}
-//import org.apache.mahout.text.wikipedia.XmlInputFormat
-
-import scala.collection.convert.ImplicitConversions.{`iterable AsScalaIterable`, `iterable asJava`}
-import scala.collection.mutable
-import scala.xml.XML
 
 object Driver {
   def main(args: Array[String]): Unit = {
@@ -20,14 +13,16 @@ object Driver {
     val job = Job.getInstance(configuration,"wordcount")
     job.setInputFormatClass(classOf[XmlInputFormatWithMultipleTags])
     job.setJarByClass(this.getClass)
+    // Specifying which functionality
     job.setMapperClass(classOf[ListRankingMapper])
     job.setReducerClass(classOf[ListRankingReducer])
-    // output pair of mapper
+    // Output pair of mapper
     job.setMapOutputKeyClass(classOf[Text])
     job.setMapOutputValueClass(classOf[MapWritable])
-    // output pair of reducer
+    // Output pair of reducer
     job.setOutputKeyClass(classOf[Text])
     job.setOutputValueClass(classOf[Text])
+    // Input/Output paths from command "hadoop jar <.jar file> <MainClass> <XMlInputPath> <OutputPath>
     FileInputFormat.addInputPath(job, new Path(args(0)))
     FileOutputFormat.setOutputPath(job, new Path(args(1)))
     System.exit(if(job.waitForCompletion(true))  0 else 1)
